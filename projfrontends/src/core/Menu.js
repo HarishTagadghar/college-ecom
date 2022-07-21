@@ -200,11 +200,14 @@ const handleClickOutSite = event => {
         <nav className="user-nav">
           {/* home */}
 
-          <Link to="/">
+          {!isAutheticated() || isAutheticated() && isAutheticated().user.role !== 1 && (
+            <Link to="/">
             <div className="user-nav-icon-box">
               <img src={require("../images/SVG/home2.svg")} className="user-nav-icon" alt="" />
             </div>
           </Link>
+          )}
+         
 
 
 
@@ -222,7 +225,7 @@ const handleClickOutSite = event => {
           {/* admin dashbord */}
           {isAutheticated() && isAutheticated().user.role === 1 && (
             <Fragment>
-              <Link
+              {/* <Link
 
                 to="/user/dashboard"
               >
@@ -232,7 +235,7 @@ const handleClickOutSite = event => {
                   <span className="user-nav-notification">{orders.length}</span>
                 </div>
 
-              </Link>
+              </Link> */}
               <Link
 
                 to="/admin/dashboard"
@@ -248,16 +251,21 @@ const handleClickOutSite = event => {
           )}
 
           {/* cart */}
-          <Link to="/cart" >
+          {!isAutheticated() || isAutheticated() && isAutheticated().user.role !== 1 && (
+            <div>
+                          <Link to="/cart" >
 
 
-            <div className="user-nav-icon-box">
-              <img src={require("../images/SVG/cart.svg")} className="user-nav-icon" alt="" />
+          <div className="user-nav-icon-box">
+            <img src={require("../images/SVG/cart.svg")} className="user-nav-icon" alt="" />
 
-              <span className="user-nav-notification">{cart.length}</span>
-            </div>
+            <span className="user-nav-notification">{cart.length}</span>
+          </div>
 
           </Link>
+            </div>
+          )}
+         
 
           {/* profile */}
           {!isAutheticated() && (

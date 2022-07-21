@@ -190,7 +190,8 @@ console.log(loading);
     <div className="hcontainer">
       <div className="sidebar">
         <h2 className="sidebar-title">Trending products</h2>
-        {sideProducts.slice(8, 13).map((product, index) => {
+        {/* {console.log(products , "side products")} */}
+        {products.slice(8, 13).map((product, index) => {
           return (
             <div key={product._id} className="">
               <SideProduct product={product} />
@@ -222,7 +223,7 @@ return(
         <div className="b">
           <h2 className="sidebar-title ">Top Rated</h2>
 
-          {sideProducts.slice(30, 35).map((product, index) => {
+          {products.slice(0, 5).map((product, index) => {
             return (
               <div key={product._id} className="">
                 <SideProduct product={product} />
